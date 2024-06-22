@@ -1,1 +1,525 @@
+Skip to main content
+Advertisement
+
+
+SpringerOpen
+
+Search
+Get published
+Explore Journals
+Books
+About
+Login
+EURASIP Journal on Wireless Communications and Networking
+About
+Articles
+Submission Guidelines
+Submit manuscript
+Wearable IoT enabled real-time health monitoring system
+Download PDF
+Research
+Open access
+Published: 22 December 2018
+Wearable IoT enabled real-time health monitoring system
+Jie Wan, Munassar A. A. H. Al-awlaqi, MingSong Li, Michael O’Grady, Xiang Gu, Jin Wang & Ning Cao 
+EURASIP Journal on Wireless Communications and Networking volume 2018, Article number: 298 (2018) Cite this article
+
+38k Accesses
+
+158 Citations
+
+Metricsdetails
+
+Abstract
+As the age profile of many societies continues to increase, in addition to the increasing population of people affected by chronic diseases, including diabetes, cardiovascular disease, obesity, and so on, supporting health, both mentally and physically, is of increasing importance if independent living is to be maintained. Sensing, remote health monitoring, and, ultimately, recognising activities of daily living have been an promising solution. From a technical perspective, the Internet of Things (IoT) is gaining a rapidly growing attention in many disciplines, especially in personalised healthcare. Meanwhile, body area sensor network (BASN) under the IoT framework has been widely applied for ubiquitous health monitoring, for example. ECG monitoring has been commonly adopted as vital approach for diagnosing heart disease. The main contribution of this paper include the following: firstly, this paper presents a novel system, the WISE (Wearable IoT-cloud-baSed hEalth monitoring system), for real-time personal health monitoring. WISE adopts the BASN (body area sensor network) framework in the support of real-time health monitoring. Several wearable sensors have been embedded, including the heartbeat, body temperature, and the blood pressure sensors. Secondly, the majority of existing wearable health monitoring systems requisite a smart phone as data processing, visualisation, and transmission gateway, which will indeed impact the normal daily use of the smart phone. Whilst in WISE, data gathered from the BASN are directly transmitted to the cloud, and a lightweight wearable LCD can be embedded as an alternative solution for quick view of the real-time data.
+
+1 Introduction
+The size and composition of the world population has changed over the last couple of decades, and these trends are projected to continue. Such demographic trends have significant implications for almost all areas of the society, particularly in health and healthcare. Life expectancy has increased dramatically, especially in the more affluent nations, which is set to be celebrated and should be viewed as an opportunity for people to live longer and better. However, this requires substantial improvement in both the healthcare service and the living environment, as older people generally require more healthcare than their younger counterparts. Additionally, older people are more likely to suffer from chronic disease as part of the natural ageing process. In parallel to this demographic time bomb, the cost of healthcare provision is increasing rapidly in all the nations across the world. For example, China spent over 50 million Yuan on healthcare infrastructure in 2001, which was 4.58% of its total GDP, whilst the figure increased up to over 400 million Yuan in 2015, which account for approximately 6.05% of the total GDP.
+
+To move forward, embedding modern information and communication technologies (ICT) in healthcare system is expected to deliver more effective and efficient healthcare services to patients with chronic disease and elderly. In the meantime, several phenomena have been risen, such as ambient assisted living (AAL) [1, 2], ubiquitous healthcare, and IoT for healthcare [3]. Such terms all differ with each other, whilst all are co-related. IoT emphasises the interconnection of all physical and digital items including sensors, smart devices, cyber sensors, and so much more, which allows the automatic and efficient data transmission and shared over the Internet. Hence, empowering the utility of IoT in healthcare, with interconnected medical sensors, especially wearable or implantable, is considered to be able to provide smart accurate and cost-effective personalised healthcare service [4]. A general architecture of IoT-enabled healthcare is illustrated in Fig. 1. The sensing layer is designated to observing the users’ health condition both physically, mentally, and emotionally; thereby, a set of sensors can be embedded [5], for example, the wearable sensors such as ECG and blood pressure, to collect the biomedical parameters, the GPS sensor for positioning and localisation, and RFID for identification. In addition, smart homes are often frequently applied for sensing the information of the users’ immediate surroundings, such as the home conditions and the items used [6]. Secondly, the network layer enables the efficient and secure data transmission to corresponding data process units [7]. A number of short-range communication protocols have been widely applied, such as ZigBee. More recently, several new techniques have been introduced, such as the 6LowPAN [8], NB-IOT [9], and LoRa. And then, the third layer is the Data Processing module, which is responsible for retrieving valuable knowledge from the sensor data that obtained from the first layer. Learning-based approaches have been the most promising solution for data mining. Finally, based upon the conduction of the top three layers, intelligent services and applications can be delivered, such as disease diagnosis, behaviour recognition [10], and smart assistance.
+
+Fig. 1
+figure 1
+IoT for healthcare: a overall framework of embedding IOT technologies for personalised healthcare
+
+Full size image
+In this paper, we presented a framework of the Wearable IoT-cloud-baSed hEalth monitoring system (WISE). This paper is structured as follows: Section 2 illustrates the related research in IoT-enabled personal healthcare for assisted living. Section 3 demonstrates the design, methodology, and experiment results of the proposed WISE system. Section 4 outlines the discussion and future works, after which this paper is concluded in Section 5.
+
+2 Related works
+Research in adopting wearable IoT in healthcare has been extensive, many of the applications have already been commercialised and available in the market. Existing works often focus on assisting people who experience difficulties in maintaining independent living, for example, elderly or people with certain chronic diseases [11], such as heart disease, diabetes, and Alzheimer’s. For instance, Varatharajan et al. [12] present a dynamic time warping algorithm-based early detection of Alzheimer disease using wearable sensors, whilst Romero et al. [13] describe a system that diagnose and monitor Parkinson’s disease. Nonetheless, it is impossible to develop a one-size-fits-all application that can address all the needs of various individuals; hence, several directions have been explored as demonstrated in the following sections.
+
+2.1 From mobile phone to personal healthcare
+In the last couple of decades, smart phone or tablet has become the centre of mobile computing and communication in our daily lives. Combined with the introduction of diverse inbuilt sensors, mobile phones offer richer functionalities and advancements, which are believed to revolutionise a number of social and economic sectors in the near future. These include social networking, environmental, and surveillance monitoring, healthcare and wellbeing, and transportation. Today’s smart phone has been delivered with a richer range of sensor units, which includes a GPS, microphone, accelerometer, camera, ambient light, gyroscope, and digital compass. In addition, the majority of smart phones are embedded with WiFi, 3G/4G/5G, and Bluetooth radio, which enable the networking and information sharing with other end terminals. In recent years, research on mobile phone-based healthcare systems has been attracting an increasing attention, and countless applications have been developed [14, 15].
+
+2.1.1 Mobile phones with GPS
+Mobile phones are commonly harnessed for outdoor tracking systems, serving mainly as signal transmitters. For example, Pigadas et al. [16] present an Android phone-based application that gathers GPS data, accelerometer information, and data from a number of wearable sensors, then transmits these data to a remote base station. Notifications can be determined and transmitted when hazardous situations are detected. Likewise, Pirani et al.[17] is another Android smart phone-based application aimed to managing the wandering behaviour, utilising the location and context information. A key element of this prototype is that user’s behaviour pattern can be learned via a decision theoretic model. In addition, verbal prompts can be provided to navigate users to a known place or calling carers.
+
+2.1.2 Mobile phone with wearable sensors
+Remote health monitoring has been proposed and investigated for a few decades [18]. Sensors and sensor networks are the fundamental technologies, which are deployed to collect a number of health-related signals, such as ECG and heartbeat. A typical solution for remote health monitoring is utilising a smart phone as a networking gateway, which gathers the sensor signals, with or without further processing, and then transmits to an associated medical centre or data processing server. Another key concept is the Body Area Network (BAN), which is composed of a number of interconnected wearable sensing devices to collect a series of biomedical parameters, such as ECG, EEG, blood pressure, and body temperature. Such sensor nodes are interconnected via various communication protocols such as ZigBee, Bluetooth, and WiFi. However, sensor nodes are often designed with limited memory and computing capacity; thus, sensor data are typically transmitted to another processing server, where mobile phone is commonly adopted.
+
+2.2 Wearable IoT in collaboration with cloud computing
+Heterogeneous wearable sensing devices have been introduced to collect the patients’ biomedical data, include EMG, ECG, EEG, blood pressure, body temptation, pulse oximetry, blood glucose, and sweat sensor. Due to the limited computing capability of the sensing devices, which are not able to manipulate all the sensed data, a typical solution is to harness a smart phone or tablet as the data processing component. A series of tasks can be accomplished by a smart phone or tablet, for example, raw data processing, visualisation of the data for the users, and transmission of the data to other data centres. Nonetheless, such systems often require the applications operating on a 24/7 basis, which will indeed affect the normal use of the mobile phone. With the recent advancement of cloud computing [19, 20], the sensor data can be directly transmitted to a cloud sever [21, 22]; authorised users can access the data with any Internet-enabled devices at any time from anywhere [23]. For example, Pigadas et al. [24] present an IoT-cloud based ECG monitoring system, where the sensed data are transmitted to the cloud sever via WiFi directly. The patients, doctors, and family members can access the data via either the web or a mobile application.
+
+2.3 Physical activity recognition with wearables
+The idea of adopting sensors and sensor networks for activity monitoring and recognition [25] has become prevalent for the last two decades [26]. One of the earliest activity recognition frameworks is about mounting a number of accelerometers to the human body to capture the movement data of different parts of the human body [27, 28], and then identify the user’s body motions. Accelerometers and gyroscope sensors have been the prevalent selections for identifying body motion and gesture detection in the last few decades. One or more accelerometer sensors can be adhered on human body and clothes, which are usually located on the arm, ankle, thigh, wrist, hip, and so on. A number of motions can be determined utilising two-axis or three-axis accelerometer data, such as walking, sitting, standing, running, stretching, and cycling [29]. In addition, the number of accelerometer sensors and the position where the sensors are mounted must be carefully considered, which significantly contributes to the accuracy of the recognition performance [30].
+
+Bao and Intille [31] present a system that is able to detect numerous motions and activities using the user-mounted acceleration data from a number of on-body accelerometers, which include walking, sitting and relaxing, standing still, watching TV, running, scrubbing, folding laundry, brushing teeth, riding elevator, walking, carrying items, working on computer, eating or drinking, reading, cycling, strength-training, vacuuming, lying down, and climbing stairs. Another motion detection application is illustrated in [32], where one single accelerometer is worn on the subject’s waist, to recognise a number of gestures include standing, walking, running, and claiming up stairs. Moreover, uWave [33] develops a recognition algorithm that recognises eight personalised gestures using a single accelerometer sensor. It achieves the accuracy of 98.6% by using a large number of training examples. Another widespread utility of acceleration data is fall detection, which is extremely important for elderly health monitoring. Numerous systems of this nature have been proposed, including [34, 35]. In addition, Roy et al. [36] present an infrastructure-assisted smart phone-based activity recognition system in multi-inhabitant smart environment. It leverages both smart phone-enabled sensors and the smart environmental sensors to recognise activities of daily living (ADLs), by implementing a coupled HMM to recognise the activities of multiple inhabitants. Likewise, ActiServ uses smart phone-based accelerometer sensors to recognise simple gestures by applying the fuzzy classification. A key feature of this work is that it allows flexible placement of the mobile device. Similarly, the system presented in [37] emphasises natural placement of mobile phone, by specifying a six-pocket position, whilst implementing a SVM-based classifier.
+
+3 Methodology and experimental design
+3.1 The design of the WISE system
+This paper presents a framework of the Wearable IoT-cloud-baSed hEalth monitoring system (WISE), which adopts a number of interconnected wearable sensors to observe the health condition of the subject. A set of biomedical signals can be obtained, including the blood pressure, the heartbeat, and the body temperature. Due to the limited memory and computing capacity of the sensor nodes, as well as to avoid the adoption of a smart phone as a processing unit, the sensor data collected from those wearable sensors will be transmitted to the cloud server directly. The overall design of the WISE system is illustrated in Fig. 2. The WISE system contains three fundamental components which are the WISE body area network (W-BAN), the WISE cloud (W-Cloud), and the WISE Users.
+
+Fig. 2
+figure 2
+The framework of the WISE system. The overall design of the proposed WISE system
+
+Full size image
+3.2 The WISE body area network
+The W-BAN consists of three categories of sensing devices, which are the heartbeat sensors as depicted in Fig. 3a, the body temperature sensors illustrated in Fig. 3b, and the blood pressure sensor as demonstrated in Fig. 3c.
+
+The heartbeat sensor data indicates the regularity of the heartbeats, which can also reflect the myocardial activities. Such sensors have been commonly applies for monitoring patients with heart disease. The heartbeat sensor provides a simple way to study the heart’s function, it monitors the flow of blood through the ear lobe. As the heart forces blood through the blood vessels in the ear lobe, the amount of blood in the ear changes with time. The sensor shines a light lobe (small incandescent lamp) through the ear and measures the light that is transmitted. The clip can also be used on a fingertip or on the web of skin between the thumb and index finger.
+
+Fig. 3
+figure 3
+aThe WISE heartbeat sensor. b The WISE body temperature sensor. c The WISE blood pressure sensor
+
+Full size image
+The temperature sensor in the circuit will read the temperature from the surroundings and shown the temperature in Celsius (degrees). The LM35 is a low-voltage IC which uses approximately +5VDC of power.
+
+The blood pressure sensor is a non-invasive sensor designed to measure human blood pressure. It measures systolic, diastolic, and mean arterial pressure utilising the oscillometric technique. Monitoring blood pressure at home is important for many people, especially if someone has high blood pressure. Blood pressure does not stay the same all the time. It changes to meet your body’s needs. It is affected by various factors including body position, breathing or emotional state, exercise, and sleep.
+
+The majority of the existing wearable health monitoring systems utilise a smart phone as data processing, visualisation, and transmission gateway. However, such monitoring systems often requisite the application to operate in a 24/7 basis, which has a dramatic impact on the normal daily use of the mobile phone. However, with WISE, data from W-BAN can be transmitted to the cloud via WiFi directly without the adoption of a smart phone. In the mean time, to facilitate users to quickly access the W-BAN signals, a lightweight small-in-size wearable LCD can be embedded, to display the real-time heartbeat and body temperature data, as is demonstrated in Fig. 4. Once the WISE system is ON, the real-time data will be displayed.
+
+Fig. 4
+figure 4
+The LCD embedded within the BAN component in WISE system
+
+Full size image
+The WISE is developed based upon Arduino sensor platform integrated with the abovementioned sensor nodes. The implementation architecture of the WISE system is presented in Fig. 5. In addition to the sensors that embedded in WISE, several components are adopted as well. Firstly, a portable RFID reader is connected to the Arduino platform, which facilitates the identification of different users, thus a RFID tag should be amounted to each individual user. A lightweight LCD is included as an alternative option for the user to access the data as is depicted in Fig. 4. Furthermore, WISE is also empowered with a WiFi module, which enables the transmission of the data to the cloud and then allows the authorised users to access the real-time data from anywhere at anytime.
+
+Fig. 5
+figure 5
+Architecture of WISE system
+
+Full size image
+3.3 The WISE-Cloud
+With the advancement of cloud computing technology, the WISE BAN data can be stored and processed effectively and efficiently on the cloud. A number of functionalities are implemented with the WISE Cloud:
+
+Data storage and processing. As is discussed in previous sections, a series of sensor signals can be gathered via the WISE-BAN, including the blood pressure, heartbeat, and body temperature. Significant features can be retrieved to detect and identify potential heart disease; however, noise often existed during the data transmission, which will affect the diagnosis of the potential disease. Therefore, a data-filtering mechanism is adopted to avoid the invalid data. Moreover, the identification and accurate diagnoses of a potential disease often require a certain amount of historical data; therefore, a cloud database is established within the WISE-Cloud to store the sensor data from the WISE-BAN for each individual user.
+
+Data visualisation. A web-based data visualisation scheme is implemented for authorised users to access the data.
+
+Disease identification and notification. A sudden heart attack often seriously threatens someone’s life, who suffers from cardiac diseases. WISE aims at protecting patients from such injury, and it is important that the patients’ health condition can be monitored and understand. Moreover, any suspicious and abnormal sensor reading can be identified and notifications can be sent to identified users, such as the family members and doctors.
+
+The implementation of the WISE-Cloud is based upon a HTTP server and a storage server that of the MySQL database. A web-based GUI is developed; an example of the interface that displays the real-time heartbeat and body temperature data is depicted in Fig. 6. Once the power supply is given, the temperature from the thermistor and heart rate from the pulse metre sensor are determined. Same information is uploaded to the WISE-Cloud database server, and then displayed on the webpage in real time. A similar mechanism is also applied to the blood pressure sensor and data. Such information is fundamental for users to self-monitor their health condition, and for doctors to diagnose potential diseases. If any abnormal condition is detected, an alert will be generated to a certain stakeholder, which include a text message to the doctors or family members, and an alert is displayed on the LCD for the users themselves.
+
+Fig. 6
+figure 6
+The WISE-Cloud for authorised users to access data
+
+Full size image
+Furthermore, long-term historical data can also be visualised on the cloud, as is illustrated in Fig. 7, which demonstrates the heartbeat and body temperature data for a period of a few weeks for a particular user. In addition, the similar approaches are also adopted for the blood pressure sensor data.
+
+Fig. 7
+figure 7
+The WISE data visualisation
+
+Full size image
+Data mining module is the key component for diagnosis of heart disease. After extracting valuable features from the heartbeat and body temperature data, machine learning-based approaches are applied, such as SVM and neural network, to establish the decision models.
+
+3.4 The WISE Users
+The user component aims at providing a convenient interface for users to access the data. Authorised users can log in to the cloud server to visualised the data from the web. There are three categories of user groups within the WISE system, the patients (or the monitored subjects), the doctors or nurses, and the family members or associated caregivers. All users must register with WISE via the GUI displayed in Fig. 8 before accessing the data.
+
+Fig. 8
+figure 8
+The WISE-Cloud for user registration
+
+Full size image
+4 Discussion and future work
+IoT technology promises huge potential and benefits in the domain of personalised healthcare. The wireless body area network that consists of wearable sensing devices and communication modules have become the key enablers. Whereas patients’ health condition can be remotely monitored in real time, emergencies can be identified accurately, and associated stakeholders such as doctors and family members can be informed when needed. Thereby, research in this area has been extensive, whilst challenges still exist, as discussed in the following section.
+
+Biomedical signal monitoring often requires operating on a 24/7 basis; however, it is still uncomfortable and obtrusive for people to attach a number of sensors on some parts of the body round the clock and in the long term. On the other hand, sensors often with limited computing and storage capability, whilst they are generating massive amount of the data [38], not only significantly increase the memory and computational requirement, but also dramatically increase the complexity of the data analysis process. Hence, a more intelligent sensor data-filtering mechanism must be developed, in order to precisely retrieve the most valuable information. Moreover, battery life is one of the key issues with many sensing devices including the smart phone, especially with Bluetooth and WiFi connections. Therefore, a more sophisticated data transmission strategy can be an alternative solution [39], where the data transmission frequency can be minimised whilst maintaining or optimising the overall performance of the system [40]. BAN has been the promising technique for personalised healthcare; therefore, more attention must be paid to the security, privacy, reliability, and robustness of the network. From a technical perspective, a BAN must be more robust and tolerant when a node might fail due to the battery shortage or be damaged. The network must be ensure that the communications among other nodes would not be interrupted when some of the nodes fail.
+
+IoT is gaining an increasing attention in recent years, which enables seamlessly integration of heterogeneous intelligent devices, such as sensors, smart phones, smart TVs, and many others. Wearable IoT is one of the branches of IoT, which emphasises the connection and communication of any wearable devices. In the meantime, healthcare has become one of the potential applications of wearable IoT, which provides the infrastructure that facilitates medical data transmission and communication. It is expected not only to revolutionise the healthcare system, but also to reduce the healthcare cost. Few issues remain problematic, such as the development of a cost-effective wearable IoT platform, ensuring the scalability, robustness, security, privacy, and so on.
+
+The data mining module must be further developed, which must be able to accurately discover the patterns of certain diseases from the historical data, and ideally predict the possible disease that may develop in a foreseeable future. Machine learning-based approaches can be adopted, for example, the support vector machine (SVM), the neural networks, and deep learning. Moreover, physical activity recognition is another key avenue to extend the WISE system, as the active level of an individual is also crucial to someone’s health status. Hence, the recognition of such information is also fundamental for the detection, forecasting, and diagnosis of potential diseases.
+
+Several issues must be addressed in terms of real-time service delivery. Adaptive personalised and user-friendly services must be developed for both patients and their families, carers, and doctors. For example, carers can specify in what situation and which type of notification should be triggered. Secondly, the issue of dynamic service discovery and mapping must be addressed. For example, in the detection of the situation that the patients suffer from a sudden heart attack, what action should be taken? A medical related ontology library can be developed to identify the most proper and available services in the detection of certain conditions.
+
+5 Conclusion
+A need for real-time health and activity recognition with wearable sensors is a prerequisite for assistive paradigms. This paper presents a brief overview of existing health and behaviour-monitoring approaches based on wearable IoT technologies. Secondly, it illustrates a novel health monitoring system framework WISE, which enables the real-time monitoring of the patients or elderly users and allows the information to be accessed from the cloud.
+
+Abbreviations
+BAN:
+Body area network
+
+BASN:
+Body area sensor network
+
+WISE:
+Wearable IoT-cloud-baSed hEalth monitoring system
+
+References
+P. Cedillo, C. Sanchez, K. Campos, A. Bermeo, A systematic literature review on devices and systems for ambient assisted living: Solutions and trends from different user perspectives. Int. Conf. eDemocracy eGovernment (ICEDEG). 1(1), 59–66 (2018).
+
+Google Scholar
+ 
+
+A.E murabet, A. Abtoy, A. Touhafi, A. Tahiri, Ambient assisted living systems models and architectures: A survey of the state of the art. J. King Saud Univ. Comput. Inf. Sci.1(1), 1–10 (2018).
+
+Google Scholar
+ 
+
+M.W Woo, J. Lee, K. Park, A reliable IoT system for personal healthcare devices. Futur. Gener. Comput. Syst.78:, 626–640 (2018).
+
+Article
+ 
+Google Scholar
+ 
+
+F. Aktas, C. Ceken, Y.E Erdemli, IoT-based healthcare framework for biomedical applications. J. Med. Biol. Eng.15:, 1–12 (2017).
+
+Google Scholar
+ 
+
+C. Lin, N. Xiong, J. H. Park, T. Kim, Dynamic power management in new architecture of wireless sensor networks. Int J Commun Syst. 22(6), 671–693 (2010).
+
+Article
+ 
+Google Scholar
+ 
+
+L. Shu, Y. Zhang, Z. Yu, L. T. Yang, M. Hauswirth, N. Xiong, Context-aware cross-layer optimized video streaming in wireless multimedia sensor networks. J Supercomput. 54(1), 94–121 (2009).
+
+Article
+ 
+Google Scholar
+ 
+
+W. Guo, N. Xiong, A. V. Vasilakos, G. Chen, H. Cheng, Multi-source temporal data aggregation in wireless sensor networks. Wirel. Pers. Commun.56(3), 359–370 (2018).
+
+Article
+ 
+Google Scholar
+ 
+
+Y. Qiu, M. Ma, Secure group mobility support for 6lowpan networks. IEEE Internet Things J.5(2), 1131–1141 (2018).
+
+Article
+ 
+Google Scholar
+ 
+
+R.S Sinha, Y. Wei, S.-H Hwang, A survey on lpwa technology: Lora and NB-IoT. ICT Express. 3(1), 14–21 (2017).
+
+Article
+ 
+Google Scholar
+ 
+
+J. Wan, M O’Grady, M li, M Alaqi, Time-bouned Activity Recognition for Ambient Assisted Living. IEEE Trans. Emerg. Top. Comput.3(1), 1–14 (2018).
+
+Google Scholar
+ 
+
+N.G Hallfors, M. Alhawari, M. Abi Jaoude, Y. Kifle, H. Saleh, K. Liao, M. Ismail, A.F Isakovic, Graphene oxide: Nylon ECG sensors for wearable IoT healthcare—nanomaterial and SOC interface. Analog Integr. Circ. Sig. Process.1:, 1–8 (2018).
+
+Google Scholar
+ 
+
+R. Varatharajan, G. Manogaran, M.K Priyan, R. Sundarasekar, Wearable sensor devices for early detection of alzheimer disease using dynamic time warping algorithm. Clust. Comput.6:, 1–10 (2017).
+
+Google Scholar
+ 
+
+L.E Romero, P. Chatterjee, R.L Armentano, An IoT approach for integration of computational intelligence and wearable sensors for Parkinson’s disease diagnosis and monitoring. Health Technol.6(3), 167–172 (2016).
+
+Article
+ 
+Google Scholar
+ 
+
+D. Dubey, A. Amritphale, A. Sawhney, N. Amritphale, P. Dubey, A. Pandey, Smart phone applications as a source of information on stroke. J Stroke. 16(2), 86–90 (2014).
+
+Article
+ 
+Google Scholar
+ 
+
+A. Pal, A. Visvanathan, A.D Choudhury, A. Sinha, in 29th Annual ACM Symposium on Applied Computing. Improved heart rate detection using smart phone (ACMNew York, 2014), pp. 8–13.
+
+Google Scholar
+ 
+
+V. Pigadas, C. Doukas, V.P Plagianakos, I. Maglogiannis, in 4th International Conference on PErvasive Technologies Related to Assistive Environments. Enabling constant monitoring of chronic patient using android smart phones (ACMNew York, 2011), pp. 63–1632.
+
+Google Scholar
+ 
+
+E.Z Piraniy, F. Bulakiwala, M. Kagalwala, M. Kalolwala, S. Raina, Android based assistive toolkit for alzheimer. Procedia Comput. Sci. 79:, 143–151 (2016).
+
+Article
+ 
+Google Scholar
+ 
+
+K. Özgür, S. Bromuri, M. Sindlar, T. van derWeide, E.A Pelaez, U. Schaechtle, B. Alves, D. Zufferey, E. Rodriguez-Villegas, M.I Schumacher, K. Stathis, COMMODITY 12: A smart e-health environment for diabetes management. J. Ambient. Intell. Smart Environ.5(5), 479–502 (2013).
+
+Article
+ 
+Google Scholar
+ 
+
+P. Verma, S.K Sood, S. Kalra, Cloud-centric IoT based student healthcare monitoring framework. J. Ambient. Intell. Humanized Comput.116:, 1–17 (2017).
+
+Google Scholar
+ 
+
+S. Sareen, S.K Sood, S.K Gupta, IoT-based cloud framework to control ebola virus outbreak. J. Ambient. Intell. Humanized Comput.9:, 1–18 (2016).
+
+Google Scholar
+ 
+
+Z. Xia, Y. Zhu, X. Sun, Z. Qin, K. Ren, Towards privacy-preserving content-based image retrieval in cloud computing. IEEE Trans. Cloud Comput.6(1), 276–286 (2018).
+
+Article
+ 
+Google Scholar
+ 
+
+Z. Xia, N.N Xiong, A.V Vasilakos, X. Sun, Epcbir: An efficient and privacy-preserving content-based image retrieval scheme in cloud computing. Inf. Sci.387:, 195–204 (2017).
+
+Article
+ 
+Google Scholar
+ 
+
+N. Xiong, W. Han, A. Vandenberg, Green cloud computing schemes based on networks: a survey. IET Commun. 6(18), 3294–3300 (2012).
+
+Article
+ 
+Google Scholar
+ 
+
+Z. Yang, Q. Zhou, L. Lei, K. Zheng, W. Xiang, An IoT-cloud based wearable ECG monitoring system for smart healthcare. J. Med. Syst.40(12), 1–11 (2016).
+
+Article
+ 
+Google Scholar
+ 
+
+L. Chen, J. Hoey, C.D Nugent, D.J Cook, Z. Yu, Sensor-based activity recognition. IEEE Trans. Syst. Man Cybern. C Appl. Rev.99:, 1–19 (2012).
+
+Google Scholar
+ 
+
+J.R Cheng, R.M Xu, X.Y Tang, V.S Sheng, C.T Cai, An abnormal network flow feature sequence prediction approach for DDOS attacks detection in big data environment. Comput. Mater. Continua. 55:, 95–119 (2018).
+
+Google Scholar
+ 
+
+M. deAlmeida Mendes, I.C.M daSilva, V.V Ramires, F.F Reichert, R.C Martins, E. Tomasi, Calibration of raw accelerometer data to measure physical activity: A systematic review. Gait Posture. 61:, 98–110 (2018).
+
+Article
+ 
+Google Scholar
+ 
+
+C.R Wu, E. Zapevalova, Y.W Chen, F. Li, Time optimization of multiple knowledge transfers in the big data environment. Comput. Mater. Continua. 54:, 269–285 (2018).
+
+Google Scholar
+ 
+
+E. Garcia-Ceja, C.E Galvn-Tejada, R. Brena, Multi-view stacking for activity recognition with sound and accelerometer data. Inf. Fusion. 40:, 45–56 (2018).
+
+Article
+ 
+Google Scholar
+ 
+
+K. Lee, M.-P Kwan, Physical activity classification in free-living conditions using smartphone accelerometer data and exploration of predicted results. Computers, Environment and Urban Systems. 67:, 124–131 (2018).
+
+Article
+ 
+Google Scholar
+ 
+
+L. Bao, S. Intille, in Pervasive Computing. Activity Recognition from User-Annotated Acceleration data (Proc Pervasive. 3001, 2004), pp. 1–17.
+
+N. Ravi, N. Dandekar, P. Mysore, M.L Littman, Activity recognition from accelerometer data. 3:, 1541–1546 (2005). www.aaai.org.
+
+J. Liu, L. Zhong, J. Wickramasuriya, V. Vasudevan, uwave: Accelerometer-based personalized gesture recognition and its applications. Pervasive Mob. Comput.5(6), 657–675 (2009).
+
+Article
+ 
+Google Scholar
+ 
+
+B. Erdau, I. Atasoy, Koray, H. Ofuul, Integrating features for accelerometer-based activity recognition. Procedia Comput. Sci.98:, 522–527 (2016).
+
+Article
+ 
+Google Scholar
+ 
+
+C. Catal, S. Tufekci, E. Pirmit, G. Kocabag, On the use of ensemble of classifiers for accelerometer-based activity recognition. Appl. Soft Comput.37:, 1018–1022 (2015).
+
+Article
+ 
+Google Scholar
+ 
+
+N. Roy, A. Misra, D. Cook, in IEEE International Conference on Pervasive Computing and Communications. Infrastructure-assisted smartphone-based ADL recognition in multi-inhabitant smart environments (IEEESan Diego, 2013), pp. 38–46.
+
+Google Scholar
+ 
+
+S. Hui, W. Zhongmin, Compressed sensing method for human activity recognition using tri-axis accelerometer on mobile phone. J. China Univ. Posts Telecommun.24(2), 31–71 (2017).
+
+Article
+ 
+Google Scholar
+ 
+
+H. Cheng, D. Feng, X. Shi, C. Chen, Data quality analysis and cleaning strategy for wireless sensor networks. EURASIP J. Wirel. Commun. Netw.61:, 1–11 (2018).
+
+Article
+ 
+Google Scholar
+ 
+
+H. Cheng, Z. Su, N. Xiong, Y. Xiao, Energy-efficient node scheduling algorithms for wireless sensor networks. Inf. Sci.329(2), 461–477 (2016).
+
+Article
+ 
+MATH
+ 
+Google Scholar
+ 
+
+H. Cheng, N. Xiong, A.V Vasilakos, L.T Yangy, G. Chen, Nodes organization for channel assignment with topology preservation in multi-radio wireless mesh networks. Ad Hoc Netw.10(5), 760–773 (2012).
+
+Article
+ 
+Google Scholar
+ 
+
+Download references
+
+Acknowledgements
+The authors acknowledged the anonymous reviewers and editors for their efforts and valuable comments and suggestions.
+
+Funding
+This work is supported by Jiangsu Provincial Education Department under grant 16KJB520038, within Nantong University, Jiangsu, China.
+
+Availability of data and materials
+The datasets supporting the conclusions of this article are included within this article.
+
+Author information
+Authors and Affiliations
+NanTong University China, SeYuan Road, NanTong, China
+
+Jie Wan, Munassar A. A. H. Al-awlaqi, Xiang Gu & Jin Wang
+
+University College Dublin Ireland, Belfield, Dublin 4, Ireland
+
+Michael O’Grady
+
+TeraData Information Systems Ltd, Beijing, China
+
+MingSong Li
+
+BeiHai College QingDao China, Huang Dao, Qingdao, China
+
+Ning Cao
+
+Contributions
+JW and ML contributed to the concept and design of this research. MA contributed to the engineering implementation of the WISE system. MG, XG, JW, and NC contributed to the editing of the article. All authors read and approved the final manuscript.
+
+Corresponding author
+Correspondence to Jie Wan.
+
+Ethics declarations
+Competing interests
+The authors declare that they have no competing interests.
+
+Publisher’s Note
+Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional affiliations.
+
+Rights and permissions
+Open Access This article is distributed under the terms of the Creative Commons Attribution 4.0 International License (http://creativecommons.org/licenses/by/4.0/), which permits unrestricted use, distribution, and reproduction in any medium, provided you give appropriate credit to the original author(s) and the source, provide a link to the Creative Commons license, and indicate if changes were made.
+
+Reprints and permissions
+
+About this article
+Check for updates. Verify currency and authenticity via CrossMark
+Cite this article
+Wan, J., A. A. H. Al-awlaqi, M., Li, M. et al. Wearable IoT enabled real-time health monitoring system. J Wireless Com Network 2018, 298 (2018). https://doi.org/10.1186/s13638-018-1308-x
+
+Download citation
+
+Received
+26 June 2018
+
+Accepted
+22 November 2018
+
+Published
+22 December 2018
+
+DOI
+https://doi.org/10.1186/s13638-018-1308-x
+
+Share this article
+Anyone you share the following link with will be able to read this content:
+
+Get shareable link
+Provided by the Springer Nature SharedIt content-sharing initiative
+
+Keywords
+Internet of things
+Wearable
+Cloud computing
+Health monitoring
+Download PDF
+Collection
+
+Algorithms and Architectures for Industrial Wireless Sensor Networks
+Sections
+Figures
+References
+Abstract
+Introduction
+Related works
+Methodology and experimental design
+Discussion and future work
+Conclusion
+Abbreviations
+References
+Acknowledgements
+Author information
+Ethics declarations
+Rights and permissions
+About this article
+Advertisement
+
+
+Support and Contact
+Jobs
+Language editing for authors
+Scientific editing for authors
+Leave feedback
+Terms and conditions
+Privacy statement
+Accessibility
+Cookies
+Follow SpringerOpen
+SpringerOpen Twitter page
+SpringerOpen Facebook page
+By using this website, you agree to our Terms and Conditions, Your US state privacy rights, Privacy statement and Cookies policy. Your privacy choices/Manage cookies we use in the preference centre.
+
+Springer Nature
+© 2024 BioMed Central Ltd unless otherwise stated. Part of Springer Nature.
+
+
 # codtech-task-3
